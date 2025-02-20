@@ -5,10 +5,12 @@ html, body {
   height: 100vh;
   justify-content: center;
   align-items: center;
-  background-color: #0D1B2A;
+  background-color: #000000;
+  overflow: hidden;
 }
 
 canvas {
   display: block;
-  
+  padding: 0;
+  margin: 0;
 }
