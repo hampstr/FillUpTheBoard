@@ -12,6 +12,7 @@ let headPosition;
 let ogGrid;
 let ogHeadPosition;
 let resetButton;
+let newButton;
 
 function create2DArray(rows, cols, fill) {
 	let arr = new Array(rows);
@@ -141,11 +142,22 @@ function setup() {
 		size = 300;
 	}
 
-	canvas = createCanvas(size, size);
+	let buttonContainer = createDiv();
+	buttonContainer.style("display", "flex");
+	buttonContainer.style("flex-direction", "column");
+	buttonContainer.style("gap", "10px");
 
 	resetButton = createButton("Reset");
-	resetButton.style("font-size", "20px");
+	resetButton.style("font-size", "15px");
+	resetButton.parent(buttonContainer);
 	resetButton.mousePressed(reset);
+
+	newButton = createButton("New Puzzle");
+	newButton.style("font-size", "15px");
+	newButton.parent(buttonContainer);
+	newButton.mousePressed(createPuzzle);
+
+	canvas = createCanvas(size, size);
 	createPuzzle();
 
 	if (!localStorage.getItem("entered")) {
@@ -294,5 +306,5 @@ function winCheck() {
 		}
 	}
 	alert("You win!");
-	location.reload();
+	createPuzzle();
 }
